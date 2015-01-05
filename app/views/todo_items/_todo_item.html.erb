@@ -1,0 +1,7 @@
+<li class="todo__item <%= item.completed ? "completed" : "" %>" data-id="<%= item.id %>">
+  <div class="todo__item--view view">
+    <input class="todo__toggle toggle todo__input" type="checkbox" <%= "checked" if item.completed %>>
+    <label class="todo__label"><%= item.title %></label>
+    <button class="todo__destroy destroy todo__button"></button>
+  </div>
+</li>

@@ -1,11 +1,16 @@
-<section class="todo">
+<div class="todo">
   <header class="todo__header">
     <h1 class="todo__h1">todos</h1>
-    <input class="todo__new todo__input" placeholder="What needs to be done?" autofocus="autofocus">
+    <%= form_for TodoItem.new, :method => :post, :remote => true do |f| %>
+      <% f.text_field :title, id: 'new-todo', class: 'todo__new todo__input', placeholder: 'What needs to be done?', autofocus: true %>
+    <% end %>
+    <%# input class="todo__new todo__input" placeholder="What needs to be done?" autofocus="autofocus" %>
   </header>
   <section class="todo__main">
-    <ul class="todo__list">
-
+    <ul id="todo-list" class="todo__list">
+      <% @todo_items.each do |item| %>
+        <%= render partial: 'todo_item', locals: {item: item} %>
+      <% end %>
     </ul>
   </section>
   <footer class="todo__footer">
@@ -13,4 +18,4 @@
       Clear completed
     </button>
   </footer>
-</section>
+</div>
